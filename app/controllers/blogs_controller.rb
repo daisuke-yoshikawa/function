@@ -16,7 +16,6 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
-    render :new if @blog.invalid?
     if @blog.save
       redirect_to blogs_path, notice: "ブログを作成しました！"
     else
@@ -47,6 +46,7 @@ class BlogsController < ApplicationController
   end
   
   def confirm
+    render :new if @blog.invalid?
     @blog = Blog.new(blog_params)
   end
 
