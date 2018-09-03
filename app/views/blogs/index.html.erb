@@ -2,23 +2,22 @@
 
 <p><%= notice %></p>
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th></th>
-  </tr>
-
+<div class="container">
+  <div class="row">
 <% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.content %></td>
-    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_blog_path(blog.id) %></td>
-    <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
+  <div class="col-xs-12 col-md-6">
+    <h2><%= blog.title %></h2>
+    <p><%= blog.content %></p>
+    <div>
+    <%= link_to '詳細を確認する', blog_path(blog.id) ,class: 'btn btn-default' %>
+    <%= link_to "ブログを編集する", edit_blog_path(blog.id) , class: 'btn btn-info' %>
+    <%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete  ,data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %>
+    </div>
+  </div>
 <% end %>
-</table>
+</div>
+</div>
 
 <br>
 
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+<%= link_to '新しくブログを投稿する', new_blog_path,class: 'btn btn-default' %>

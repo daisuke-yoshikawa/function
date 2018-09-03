@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Function</title>
+    <title>blog_function</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width"> 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+    <header>
+        <ul class="row">
+            <li class="col-xs-12 col-md-4"><%= link_to 'ホーム', root_path %></li>
+            <li class="col-xs-12 col-md-4"><%= link_to '一覧', blogs_path %></li>
+            <li class="col-xs-12 col-md-4"><%= link_to '新規投稿', new_blog_path %></li>
+        </ul>
+    </header>
+    </div>
+<%= yield %>
+
+      <footer class="footer">
+        <p>ドローンは世界を変える</p>
+      </footer>
+      
   </body>
 </html>
