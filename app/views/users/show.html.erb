@@ -1,8 +1,16 @@
-<h1><%= @user.name %>のページ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
 
-<p>メールアドレス: <%= @user.email %></p>
+    <h1><%= @user.name %>のページ</h1>
 
-  <% @favorites_blogs.each do |blog| %>
-    <h2><%= blog.title %></h2>
-    <p><%= blog.content %></p>
-  <% end %>
+    <p>メールアドレス: <%= @user.email %></p>
+
+    <% @favorites_blogs.each do |blog| %>
+      <h2><%= blog.title %></h2>
+      <p><%= blog.content %></p>
+    <% end %>
+    
+    </div>
+  </div>
+</div>
