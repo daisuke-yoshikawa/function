@@ -1,5 +1,5 @@
 class AddUserIdToBlogs < ActiveRecord::Migration[5.1]
   def change
-    add_reference :blogs, :user, foreign_key: true
+    add_column :blogs, :user_id, :integer
   end
 end

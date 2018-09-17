@@ -6,6 +6,12 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.all
   end
+  
+  def confirm
+    @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
+    render :new if @blog.invalid?
+  end
 
   def new
     if params[:back]
@@ -46,11 +52,6 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     redirect_to blogs_path, notice: "ブログを削除しました！"
-  end
-  
-  def confirm
-    @blog = Blog.new(blog_params)
-    render :new if @blog.invalid?
   end
 
   private

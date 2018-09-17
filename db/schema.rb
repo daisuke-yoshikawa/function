@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20180913135032) do
     t.string "title"
     t.text "content"
     t.integer "user_id"
-    t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
