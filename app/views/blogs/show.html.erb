@@ -4,6 +4,10 @@
     <h1>ブログ詳細画面</h1>
     <p>タイトル: <%= @blog.title %></p>
     <p>内容: <%= @blog.content %></p>
+    <% if current_user.id == @blog.user_id %>
+      <%= link_to '編集', edit_blog_path(@blog.id), class:'btn btn-primary' %>
+      <%= link_to '削除', blog_path(@blog.id), method: :delete, data: {confirm: '削除しますか？'}, class:'btn btn-danger' %>
+    <% end %>
 　　<% unless @blog.user == current_user %>
     <% if @favorite.present? %>
       <%= link_to 'お気に入り解除する', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-danger' %>
