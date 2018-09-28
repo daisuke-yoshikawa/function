@@ -14,15 +14,29 @@ class UsersController < ApplicationController
       end
     end
     
+    def edit
+      @user = User.find(params[:id])
+    end
+    
+    def update
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+        redirect_to user_path
+      else
+        render 'edit'
+      end
+    end
+    
     def show
       @user = User.find(params[:id])
-      @favorites_blogs = @user.favorites_blogs
+      @favorite_blogs = @user.favorite_blogs
     end
     
     private
     def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 :image, :image_cache)
     end
     
 end

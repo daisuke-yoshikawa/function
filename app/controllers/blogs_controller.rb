@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
   
-  before_action :set_blog, only:[:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new, :edit, :show, :destroy]
+  before_action :force_redirect, only:[:new, :show, :edit, :destroy]
   
   def index
     @blogs = Blog.all
@@ -51,22 +50,20 @@ class BlogsController < ApplicationController
   end
   
   def destroy
+    @blog = Blog.find(params[:id])
     @blog.destroy
     redirect_to blogs_path, notice: "ブログを削除しました！"
   end
 
   private
+  
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :image, :image_cache)
   end
   
-  def set_blog
-    @blog = Blog.find(params[:id])
-  end
-  
-  def logged_in_user
-    unless logged_in?
-      redirect_to new_session_path 
+  def force_redirect
+    if current_user.present? == false
+      redirect_to new_session_path
     end
   end
   

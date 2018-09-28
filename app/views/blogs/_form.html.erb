@@ -22,6 +22,12 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+  <div class="blog_title">
+    <%= form.label :image %>
+    <%= image_tag(@blog.image.url) if @blog.image.url %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.file_field :image, id: :blog_image %>
+  </div>
   <%= form.submit :class=>'btn btn-primary' %>
 <% end %>
 <br>

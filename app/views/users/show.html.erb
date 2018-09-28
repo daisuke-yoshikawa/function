@@ -3,9 +3,11 @@
 
 <div class="container">
   <div class="row">
-    <% @favorites_blogs.each do |blog| %>
+    <% @favorite_blogs.each do |blog| %>
       <h2><%= blog.title %></h2>
       <p><%= blog.content %></p>
     <% end %>
+    <p>画像：</p>
+    <p><%= image_tag(@user.image.url) if @user.image.url %></p>
   </div>
 </div>
